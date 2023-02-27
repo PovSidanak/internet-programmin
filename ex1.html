@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity suggestion</title>
+    <link  rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap"rel=" stylesheet">
+    <style>
+        *{
+            box-sizing:boreder-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width:700px;
+            height: 500px;
+            border: 5px solid black;
+            padding: 20px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .title-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+        }
+        .title-container h1{
+            font-size: 100px;
+
+        }
+        .title-container h2{
+            font-family: 'Mynerve',cursive;
+            font-size: 40px;
+        }
+        button{
+            padding: 5px 30px;
+            border: none;
+            background:#1a71f3;
+            color: #fcf1f1;
+            margin-bottom: 10px;
+            cursor:pointer;
+            border-radius: 20px;
+        }
+        button-hover{
+            background: #dddcdc;
+            color: #4d92fa;
+        }
+        data-container{
+            padding:10px 20px;
+            width: 350px;
+            border: 1px solid silver;
+            border-radius: 10px;
+        }
+        data-container h4{
+            text-align: center;
+            font-size: 14px;
+            margin-bottom:20px;
+
+        }
+        .data-container .child{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+
+        }
+        .data-container .child i{
+            width: 15px;
+            height: 15px;
+            color: #1b79eb;
+        }
+        .data-cotainer .child span{
+            font-size: 15px;
+        }
+        .animation {
+           
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .animation div{
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin : 8px;
+            border: 8px solid rgb(231,10,10) infinite;
+            border-color: rgb(230, 37, 37)transparent transparent transparent;
+        }
+        .animation div:nth-child(1){
+            animation-delay:-0.45s;
+        }
+        .animation div:nth-child(2){
+            animation-delay:-0.3s;
+        }
+        .animation div:nth-child(3){
+            animation:-0.15s;
+        }@keyframes animation{
+            0%{
+
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+      <!--<div class="animation"><div></div><div></div><div></div><div></div></div>-->
+      <div class  ="title-container">
+        <h1>😑</h1>
+        <h2>Are you boring?</h2>
+
+      </div>
+      <button id="mybutton">Tell me what to do</button>
+      <div class ="data-container" id="html">
+        <h4 id="activity"> Learn and play a new game</h4>
+        <div class="child">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0
+                 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-
+                 .827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+            </svg>
+            </i>
+            <span id="type">Type: </span>
+
+        </div>
+        <div class="child">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+            </i>
+            <span id="participant">Participants: </span>
+        </div>
+        <div class="child">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </i>
+            <span id="price">Price: </span>
+        </div>
+        <div class="child">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                </svg>
+            </i>
+            <span id="link">Link: https://www.pagat.com</span>
+        </div>
+
+      </div>
+    </div>
+    
+</body>
+<script>
+    let my_url= "https://www.boredapi.com/api/activity"
+    let button = document.getElementById('mybutton')
+    let html = document.getElementById('html')
+    let type = document.getElementById('type')
+    let price = document.getElementById('price')
+    let participant = document.getElementById('participant')
+    let link = document.getElementById('link')
+    let activity = document.getElementById('activity')
+
+    button.onclick=() => {
+        fectdata(my_url)
+    }
+    function fectdata(url) {
+        html.innerHTML = '<div class="animation"><div></div><div></div><div></div><div></div></div>'
+        fetch(url).then(async (res) => {
+            let data = await res.json()
+            show_data(data)
+        })
+    }
+    function show_data(data) {
+        html.innerHTML =
+            `
+            <h4>${data['activity']}</h4>
+            <div class="child">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                    </svg>
+                </i>
+                <span id="type">Type: ${data['type']}</span>
+            </div>
+            <div class="child">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                    </svg>
+                </i>
+                <span id="participant">Participants: ${data['participants']}</span>
+            </div>
+            <div class="child">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </i>
+                <span id="price">Price: ${data['price']}$</span>
+            </div>
+            <div class="child">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                    </svg>
+                </i>
+                <span id="link">Link: ${data['link']}</span>
+            </div>
+
+        `
+    }
+
+
+
+
+
+
+</script>  
+</html>

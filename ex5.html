@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+    <style>
+        .animation {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .animation div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid rgb(223, 18, 18);
+            border-radius: 50%;
+            animation: animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: rgb(230, 37, 37) transparent transparent transparent;
+        }
+
+        .animation div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .animation div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .animation div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes animation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .pop-up{
+            position: fixed;
+            width: 800px;
+            height: 600px;
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%,50%);
+            background: #fff;
+            box-shadow: 1px 1px 257px -16px rgba(0,0,0,0.75);
+            display: none;
+        }
+        .pop-up .title-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            color: #fff;
+            background: black;
+            padding: 0 120px;
+            text-align: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .pop-up .title-container i{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            cursor: pointer;
+        }
+        .pop-up .title-container h1{
+            font-size: 36px;
+        }
+        .pop-up .title-container span{
+            font-size: 14px;
+        }
+        .pop-up .title-container p{
+            font-size: 16px;
+        }
+        .pop-up h4{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .pop-up .image-container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pop-up .image-container img{
+            width: 150px;
+            height: 150px;
+        }
+
+    </style>
+
+</head>
+<body>
+     <div class="pop-up" id="absolute">
+        <!-- <div class="title-container">
+            <h1>Accusamus beatae ad facilis cum similique qui sunt</h1>
+            <span>1</span>
+            <p>Resize the brower window to see that this page is responsive by the way</p>
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>                  
+            </i>
+        </div>
+        <h4>1</h4>
+        <div class="image-container">
+            <img src="">
+        </div> -->
+    </div>
+    <div class="w-screen h-screen flex gap-5">
+        <div class="flex-0 bg-[#ebebeb]">
+            <div class="p-2">
+                <form autocomplete="off" id="form">
+                    <div class="container">
+                        <p>Name:</p>
+                        <input type="text" id="name" class="border border-[#969696]" required>
+                        <p>Category:</p>
+                        <input type="text" id="category" class="border border-[#969696]" required>
+                        <p>Price:</p>
+                        <input type="text" id="price" class="border border-[#969696]" required>
+                    </div>
+                    <button class="bg-[#efefef] w-10 h-5 mt-2 border border-[#969696] text-sm" id="btn"
+                        type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="flex-1 bg-[#ebebeb]">
+            <div class="p-2 flex flex-wrap gap-2 justify-center" id="html">
+
+                <!-- <div class="w-56 h-60 bg-[#fff]">
+                    <div class="p-2 flex justify-between flex-col h-full">
+                        <div class="w-full flex justify-end gap-2 ">
+                            <button class="w-10 h-5 bg-[#efefef] text-xs border border-[#b9b9b9]">Delete</button>
+                            <button class="w-20 h-5 bg-[#efefef] text-xs border border-[#b9b9b9]">Change name</button>
+                        </div>
+                        <div class="flex flex-col gap-5">
+                            <div class="flex justify-center items-center">
+                                <img src="book.png" class="w-20 h-20">
+                            </div>
+                            <div class="text-sm">
+                                <p>Name: BookI1</p>
+                                <p>AlbumId: 1</p>
+                                <p>Id: 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>               -->
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let raw_url = "https://jsonplaceholder.typicode.com/photos"
+        let html = document.getElementById('html')
+        let absolute = document.getElementById('absolute')
+        let counter = 0
+
+
+        function fectdata(url) {
+            html.innerHTML = '<div class="animation"><div></div><div></div><div></div><div></div></div>'
+            fetch(url).then(async (res) => {
+                let data = await res.json()
+                show_data(data)
+            })
+        }
+
+        function show_data(data) {
+            let string_html = ""
+            for (let i = 0; i < data.length; ++i) {
+                let arr = data[i]
+
+                string_html +=
+                    `
+                    <div class="w-56 h-64 bg-[#fff]">
+                        <div class="p-2 flex justify-between flex-col h-full">
+                            <div class="w-full flex justify-end gap-2 ">
+                                <button class="w-10 h-5 bg-[#efefef] text-xs border border-[#b9b9b9]">Delete</button>
+                                <button class="w-20 h-5 bg-[#efefef] text-xs border border-[#b9b9b9]">Change name</button>
+                            </div>
+                            <div class="flex flex-col gap-5">
+                                <div class="flex justify-center items-center">
+                                    <img src="${arr['thumbnailUrl']}" class="w-20 h-20">
+                                </div>
+                                <div class="text-sm">
+                                    <p>Name: ${arr['title']}</p>
+                                    <p>AlbumId: ${arr['albumId']}</p>
+                                    <p>Id: ${arr['id']}</p>
+                                    <p class="text-xs text-red-500 cursor-pointer"  onclick="dosomething('${arr['thumbnailUrl']}','${arr['title']}','${arr['albumId']}','${arr['id']}')">See</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>         
+                    `
+
+
+                html.innerHTML = string_html
+                if (i > 500)
+                    break
+            }
+        }
+
+        fectdata(raw_url)
+
+        function dosomething(thumbnailUrl, title, albumId, id){
+            let absolute_html = 
+            `
+            <div class="title-container">
+                <h1>${title}</h1>
+                <span>${albumId}</span>
+                <p>Resize the brower window to see that this page is responsive by the way</p>
+                <i onclick="hidden_absolute(this)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>                  
+                </i>
+            </div>
+            <h4>${id}</h4>
+            <div class="image-container">
+                <img src="${thumbnailUrl}">
+            </div>
+            `
+
+            absolute.innerHTML = absolute_html
+            absolute.style.display = 'block'
+
+        }
+
+        function hidden_absolute(child){
+            absolute.style.display = 'none'
+        }
+
+
+    </script>
+
+</body>
+</html>

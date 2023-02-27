@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University List </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 800px;
+            height: 600px;
+            border: 5px solid black;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-y: scroll;
+        }
+
+        .title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        .title-container h1 {
+            font-size: 100px;
+        }
+
+        .title-container h2 {
+            font-family: 'Mynerve', cursive;
+            font-size: 40px;
+        }
+
+        button {
+            padding: 5px 40px;
+            border: none;
+            background: #1e6bdf;
+            color: #faf0f0;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .option-field {
+            position: relative;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+
+        .option-field .option-child {
+            position: absolute;
+            background: #ebeef0;
+            width: 100%;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            padding-bottom: 0;
+            display: none;
+        }
+
+        .option-field .option-child .child {
+            margin-bottom: 5px;
+        }
+
+        .option-field .option-child .child p {
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .option-field .option-child .child p:hover {
+            color: #1453c9;
+        }
+
+        .option-field::before {
+            content: '';
+            position: absolute;
+            height: 7px;
+            width: 7px;
+            z-index: 999;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            transform: rotate(var(--rotate-angle));
+            display: block;
+            bottom: 17px;
+            right: 20px;
+        }
+
+        .option-field input {
+            padding: 0 20px;
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            background: #c2c4c5;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .data-container {
+            min-height: 300px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .data-container .child{
+            height: 100px;
+            border-radius: 20px;
+            border: 1px solid rgb(223, 217, 217);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .data-container .child h4{
+            font-size: 13px;
+        }
+
+        .data-container .child p{
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .data-container .child .span-container{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 10px;
+        }
+
+        .data-container .child .span-container a{
+            color: #1d72f1;
+            cursor: pointer;
+        }
+
+        .data-container .child .span-container i{
+            color: #4889eb;
+            width: 10px;
+            height: 10px;
+        }
+
+        .animation {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .animation div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid rgb(212, 8, 8);
+            border-radius: 50%;
+            animation: animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: rgb(212, 8, 8) transparent transparent transparent;
+        }
+
+        .animation div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .animation div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .animation div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes animation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="animation"><div></div><div></div><div></div><div></div></div> -->
+        <div class="title-container">
+            <h1>🏰</h1>
+            <h2><span>Which Univ. do you want to study?</h2>
+        </div>
+        <div class="option-field" id="option_field">
+            <input id="option-input" type="text" placeholder="Country">
+            <div class="option-child" id="option">
+                <div class="child" id="option_child">
+                    <p>Cambodia</p>
+                </div>
+                <div class="child" id="option_child">
+                    <p>China</p>
+                </div>
+                <div class="child" id="option_child">
+                    <p>Thailand</p>
+                </div>
+            </div>
+        </div>
+        <div class="data-container" id="html">
+            <!-- <div class="child">
+                <h4>Asia Europe University</h4>
+                <p>(Cambodia - KH)</p>
+                <div class="span-container">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                          </svg>                          
+                    </i>
+                    <a href="#">"http:///www.angkor.edu.kh/"</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+<script>
+
+    let option_input = document.getElementById('option-input')
+    let option = document.getElementById('option')
+    let option_child = document.querySelectorAll('#option_child')
+    let option_field = document.getElementById('option_field')
+    let input_count = 0
+
+
+    let my_url = "http://universities.hipolabs.com/search?country="
+    let button = document.getElementById('mybutton')
+    let html = document.getElementById('html')
+
+    option_input.readOnly = true
+    option_field.style.setProperty('--rotate-angle', '135deg')
+
+    option_input.onclick = () => {
+        if (input_count % 2 == 0) {
+            option.style.display = "block"
+            option_field.style.setProperty('--rotate-angle', '45deg')
+        }
+        else {
+            option.style.display = "none"
+            option_field.style.setProperty('--rotate-angle', '135deg')
+        }
+        input_count = input_count + 1
+    }
+
+    option_child.forEach((child) => {
+        child.onclick = () => {
+            option_input.setAttribute("placeholder", child.childNodes[1].innerHTML)
+            dosomething(child.childNodes[1].innerHTML)
+            option_field.style.setProperty('--rotate-angle', '135deg')
+            option.style.display = "none"
+            input_count = input_count + 1
+        }
+    })
+
+    function dosomething(value){
+        let url = my_url + value
+        fectdata(url)
+    }
+
+    function fectdata(url) {
+        html.innerHTML = '<div style="width: 100%; display:flex; justify-content:center; align-items:center; height: 100%; grid-column: 1/4"><div class="animation"><div></div><div></div><div></div><div></div></div></div>'
+        fetch(url).then(async (res) => {
+            let data = await res.json()
+            show_data(data)
+        })
+    }
+
+    function show_data(data) {
+        let count_uni = 0
+        let html_string = ""
+
+        data.forEach((arr) => {
+            let web_page = arr['web_pages'][0]
+            let country = arr['country']
+            let alpha = arr['alpha_two_code']
+            let name = arr['name']
+
+            if ( count_uni < 10 )
+            html_string += 
+            `
+
+            <div class="child">
+                <h4>${name}</h4>
+                <p>(${country} - ${alpha})</p>
+                <div class="span-container">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                          </svg>                          
+                    </i>
+                    <a href="${web_page}">"${web_page}"</a>
+                </div>
+            </div>
+
+            `            
+            html.innerHTML = html_string
+            count_uni = count_uni + 1
+        })
+
+    }
+
+</script>
+
+
+</html>
