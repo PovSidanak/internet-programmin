@@ -4,202 +4,145 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nationality Guessing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
-    <style>
-        *{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-
-        }
-        body{
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-        .container{
-            width: 700px;
-            height: 500px;
-            border: 5px solid black;
-            padding  : 20px;
-            display:  flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction:column;
-        }
-        .title-container {
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-bottom: 5px;
-
-        }
-        .title-container h1{
-            font-size:100px;
-            
-        }
-        .title-container h2{
-            font-family:'Mynerve', cursive;
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        button{
-            padding: 5px 40px;
-            border: none;
-            border-radius: 20px;
-            background: #327fe4;
-            color: #fff;
-            margin-bottom:20px;
-            cursor:pointer;
-        }
-        button:hover{
-            background: #c0c0c0;
-            color: #327fe4;
-        }
-        input{
-            width: 200px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border:1px solod silver;
-            
-        }
-        .data-container{
-           height:400px;
-            width: 350px;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-         
-        }
-        
-        .data-container .child {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            height: 40px;
-            width:100%;
-            align-items: center;
-            margin-bottom:10px;
-            border: 1px solid silver;
-            border: 20px;
-
-        }
-        
-        .animation {
-            display: inline-block;
-            position: relative;
-            height: 80px;
-            width:80px
-            
-        }
-        .animation div{
-            box-sizing: border-box;
-            display: block;
-            position: absolute;
-            width: 64px;
-            height: 64px;
-            margin: 8px;
-            border: 8px solid rgb(194, 9, 9);
-            border-radius: 50%;
-            animation: animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            border-color: rgb(194, 9, 9) transparent transparent transparent;
-
-
-        }
-        .animation div:nth-child(1){
-            animation-delay:-0.45s;
-
-        }
-        .animation div:nth-child(2){
-            animation-delay:-0.3s;
-        }
-        .animation div:nth-child(3){
-            animation-delay:-0.15s;
-        }
-        @keyframes animation {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <title>List and Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body>
-    <div class="container">
-        <!-- <div class="animation"> <div></div><div></div><div></div><div></div>-->
-        <div class="title-container">
-            <h1>🌎</h1>
-            <h2><span>I know you</span> <span style="color:rgb(25, 203, 235)" >Home</span></h2>
-        </div>
-        <div class="button-container">
-            <input id="input" type="text" placeholder="Tell me your first name" required>
-            <button id="mybutton">Guess</button>
-        </div>
-        <div class ="data-container" id="html">
-            <!--<div class="child">
-                <h2>KH</h2>
-                <h2 style="color:rggb(230,37,37)">81%</h2>
-            </div>-->
+<body><div class="w-screen h-screen flex justify-center items-center">
+    <div class="w-[800px] h-[500px] border-4 border-black pl-5 pr-5 pt-2 pb-5 flex flex-col">
+        <h1 class="text-[40px] text-center mb-10">Find your favorite 🥂</h1>
+        <div class="flex gap-1 pl-20 pr-20 h-[370px]">
+            <div class="bg-gray-200 w-full h-full pl-2 pr-2 pt-1 pb-1 overflow-y-scroll border border-gray-500 rounded-md" id="scroll">
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+                <div class="w-full h-[50px] bg-white rounded-md pd-2 mb-1 flex gap-2 items-center">
+                    <p class="text-[30px]">🍻</p>
+                    <div class="flex flex-col justify-between">
+                        <h4 class="text-sm">Misspent Youth</h4>
+                        <p class="text-[8px]">The brainchild of our small batch brewer...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-full pl-2 pr-2 pt-1 pb-1 overflow-y-scroll border border-gray-500 rounded-md flex flex-col items-center">
+                <img src="image.jpg" class="w-[200px] h-[200px]">
+                <h2 class="font-bold">Arcade Nation</h2>
+                <span class="text-gray-400 text-[10px] mb-3">04/2013</span>
+                <p class="text-center text-[12px] mb-2">The brainchild of our small batch brewer, George Woods. A dangerously drinkable milk sugar- infused Scotch Ale.</p>
+                <p class="text-center text-[12px] font-semibold">Contributor</p>
+                <p class="text-center text-[12px] font-bold">(Sam Mason)</p>
+            </div>
         </div>
     </div>
-    
+</div>
 </body>
 <script>
-    let my_url= "https://api.nationalize.io?name="
-    let button = document.getElementById('mybutton')
-    let html = document.getElementById('html')
-    let name = document.getElementById('name')
-    let gender = document.getElementById('gender')
-    let probab = document.getElementById('probab')
-    let input = document.getElementById('input')
-    
-    button.onclick = () => {
-        if ( input.value !== ''){
-            let value = my_url + input.value
-            fectdata(value)
-            input.value = ''
+
+let scroll = document.getElementById("scroll");
+let string_html = ''
+let page_number = 1
+let page_size = 10
+let isBottom = true
+
+
+scroll.addEventListener('scroll', () => {
+    let clientHeight = scroll.clientHeight
+    let scrollHeight = scroll.scrollHeight
+    let scrollTop = scroll.scrollTop
+
+    if ((clientHeight + scrollTop) >= scrollHeight * 0.99) {
+        if (isBottom === true) {
+            scroll.innerHTML += 
+            `<div class="flex w-full items-center justify-center">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>`
+            page_number = page_number + 1
+            fetchApi(page_number, page_size)
+            isBottom = false
         }
     }
 
-    function fectdata(url) {
-        html.innerHTML = '<div class="animation"><div></div><div></div><div></div><div></div></div>'
-        fetch(url).then(async (res) => {
-            let data = await res.json()
-            show_data(data['country'])
-        })
-    }
+})
 
-    function show_data(data) {
-
-        let html_string = ""
-
-        data.forEach ( (arr) => {
-            html_string += 
-            `
-            <div class="child">
-                <h2>${arr['country_id']}</h2>
-                <h2 style="color:rgb(230, 37, 37)">${parseInt(parseFloat(arr['probability'])*100)}%</h2>
-            </div>
-            `
-        })
+function fetchApi(page, size) {
+    let url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=${size}`
     
-        html.innerHTML = html_string
+    fetch(url)
+        .then((data) => {
+            let array = data.json()
+            array.then((arr) => {
+                dump_data(page,arr)
+            })
+        })
+}
 
-    }
+function dump_data(page,result){
+    localStorage.setItem("page"+page, JSON.stringify(result));
+    render()
+}
+
+function render() {
+    result = localStorage.getItem("page"+page_number)
+    result = JSON.parse(result)
+
+    result.forEach((rs) => {
+        console.log(rs)
+    })
+    
+    
+    isBottom = true
+}
+
+fetchApi(1, 5)
 
 </script>
 
-
+    
+</body>
 </html>

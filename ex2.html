@@ -4,215 +4,190 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gender Guessing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
+    <title>Local data sync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        *{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-
-        }
-        body{
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-        .container{
-            width: 700px;
-            height: 500px;
-            border: 5px solid black;
-            padding  : 20px;
-            display:  flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction:column;
-        }
-        .title-container {
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            
-            margin-bottom: 5px;
-
-        }
-        .title-container h1{
-            font-size:100px;
-            justify-content: center;
-        }
-        .title-container h2{
-            font-family:'Mynerve', cursive;
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        button{
-            padding: 5px 40px;
-            border: none;
-            border-radius: 20px;
-            background: #327fe4;
-            color: #fff;
-            margin-bottom:20px;
-            cursor:pointer;
-        }
-        button:hover{
-            background: #c0c0c0;
-            color: #327fe4;
-        }
-        input{
-            width: 200px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border:1px solod silver;
-            justify-content: center;
-            align-items: center;
-           
-        }
-        .data-container{
-            padding: 10px 20px;
-            width: 350px;
-            border:  1px solid silver;
-            border-radius: 10px;
-            display:  flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap:10px;
-        }
-        .data-container h4{
-            text-align:center;
-            font-size: 18px;
-        }
-        .data-container h2{
-            font-size:34px;
-            color : rgb(170, 66, 28);
-        }
-        .data-container  h3{
-            font-size: 20px;
-            color: #3070cf;
-        }
-        .data-container .child {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom:10px;
-
-        }
-        .data-container.child i{
-            width: 15px;
-            height:  15px;
-            color: #5394f7;
-        }
-        .data-container .child span{
-            font-size:15px;
-        }
-        .animation {
-            display: inline-block;
+        .Ids-ring{
+            display: inlne-block;
             position: relative;
+            width: 80px;
             height: 80px;
-            width:80px
-            
         }
-        .animation div{
+        .Ids-ring div{
             box-sizing: border-box;
             display: block;
             position: absolute;
-            width: 64px;
-            height: 64px;
+            width: 60px;
             margin: 8px;
-            border: 8px solid rgb(194, 9, 9);
+            border:8px solid #fff;
             border-radius: 50%;
-            animation: animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            border-color: rgb(194, 9, 9) transparent transparent transparent;
+            animation: Ids-ring 1.2s cubic-bezier(0.5, 0, 0.5,1)infinite;
+            border-color: #fff transparent transparent transparent;
 
 
         }
-        .animation div:nth-child(1){
-            animation-delay:-0.45s;
+        .Ids-ring div:nth-child(1){
+           animation-delay: -0.45s;
+        }
+        .Ids-ring div:nth-child(2){
+            animation-delay: -0.3s;
+        }
+        .Ids-ring div:nth-child(3){
+            animation-delay: -0.15;
+        }
+        @keyframes Ids-ring{
+            0%{
+                transform:rotate(0deg);
 
-        }
-        .animation div:nth-child(2){
-            animation-delay:-0.3s;
-        }
-        .animation div:nth-child(3){
-            animation-delay:-0.15s;
-        }
-        @keyframes animation {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
+            }100%{
                 transform: rotate(360deg);
             }
-        }
 
+        }
 
     </style>
+
+
 </head>
 <body>
-    <div class="container">
-        <!-- <div class="animation"><div></div><div></div><div></div><div></div></div> -->
-        <div class="title-container">
-            <h1>😎</h1>
-           
-        </div>
-        <div class="title-container">
-            <h2><span>I Know you </span><span style="color:#1f72ee">Gender</span></h2>
-        </div>
-        <div class="button-container">
-            <input id="input" type="text" placeholder="Tell me your name" required>
-            <button id="mybutton">Guess</button>
-        </div>
-        <div class="data-container" id="html">
-            <h4 id="name">Name</h4>
-            <h2 id="gender">Gender</h2>
-            <h3 id="probab">Probability</h3>
+    <div class="w-screen h-screen flex justify-center items-center">
+        <div class="w-[450px] h-[500px] border-4 border-black pl-5 pr-5 pt-2 pb-2">
+            <div class="bg-gray-200 w-full  h-full pl-2 pr-2 pt-1 pb-1 overflow-y-scroll" id="scroll">
+                <!-- <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                    
+                     <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                     <p class="text-xs">🙂: Pedro</p>
+
+            </div>
+            <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                <p class="text-xs">🙂: Pedro</p>
+
+            </div>
+            <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                <p class="text-xs">🙂: Pedro</p>
+
+            </div>
+            <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                <p class="text-xs">🙂: Pedro</p>
+
+            </div>
+            <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                <p class="text-xs">🙂: Pedro</p>
+
+            </div>
+            <div class ="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: Emirates-Dubai</h4>
+                <p class="text-xs">🙂: Pedro</p>
+
+            </div>  -->
+            </div>
+
+
         </div>
     </div>
-    
-    
+    <script>
+        let  scroll= document.getElementById("scroll");
+        let string_html=''
+        let page_number = 1
+        let page_size =10
+        let isBottom= true
+
+        scroll.addEventListener('scroll', () => {
+            let clientHeight=scroll.clientHeight
+
+            let scrollHeight = scroll.scrollHeight
+        let scrollTop = scroll.scrollTop
+
+        if ((clientHeight + scrollTop) >= scrollHeight * 0.99) {
+            if (isBottom === true) {
+                scroll.innerHTML += 
+                `<div class="flex w-full items-center justify-center">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>`
+                page_number = page_number + 1
+                fetchApi(page_number, page_size)
+                isBottom = false
+            }
+        }
+
+    })
+
+    function fetchApi(page, size) {
+        let url = `https://api.instantwebtools.net/v1/passenger?page=${page}&size=${size}`
+
+        fetch(url)
+            .then((data) => {
+                let array = data.json()
+                array.then((arr) => {
+                    let result = arr['data']
+                    dump_data(page,result)
+                })
+            })
+    }
+
+    function dump_data(page,result){
+        localStorage.setItem("page"+page, JSON.stringify(result));
+        render()
+    }
+
+    function render() {
+        result = localStorage.getItem("page"+page_number)
+        result = JSON.parse(result)
+        console.log(result)
+
+        result.forEach((rs) => {
+            let client_name = rs['name']
+            let airline = rs['airline'][0]
+            let airline_name = airline['name']
+            let country = airline['country']
+
+            string_html +=
+                `
+            <div class="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: ${airline_name} - ${country}</h4>
+                <p class="text-xs">🙂: ${client_name}</p>
+            </div>
+            `
+        })
+        scroll.innerHTML = string_html
+        isBottom = true
+    }
+
+    for(page_number = 1 ;  ; ++page_number){
+        result = localStorage.getItem("page"+page_number)
+        if (result === null){
+            if (page_number === 1)
+                fetchApi(page_number, page_size)
+            else
+                page_number = page_number - 1
+            break;
+        }
+        result = JSON.parse(result)
+        console.log(result)
+        result.forEach((rs) => {
+            let client_name = rs['name']
+            let airline = rs['airline'][0]
+            let airline_name = airline['name']
+            let country = airline['country']
+
+            string_html +=
+                `
+            <div class="w-full h-[80px] bg-white pt-1 pl-2 mb-1">
+                <h4 class="text-sm">✈: ${airline_name} - ${country}</h4>
+                <p class="text-xs">🙂: ${client_name}</p>
+            </div>
+            `
+        })
+        scroll.innerHTML = string_html
+    }
+
+
+
+    </script>
     
 </body>
-<script>
-
-    let my_url = "https://api.genderize.io?name="
-    let button = document.getElementById('mybutton')
-    let html = document.getElementById('html')
-    let name = document.getElementById('name')
-    let gender = document.getElementById('gender')
-    let probab = document.getElementById('probab')
-    let input = document.getElementById('input')
-    
-
-    button.onclick = () => {
-        if ( input.value !== ''){
-            let value = my_url + input.value
-            fectdata(value)
-            input.value = ''
-        }
-    }
-
-    function fectdata(url) {
-        html.innerHTML = '<div class="animation"><div></div><div></div><div></div><div></div></div>'
-        fetch(url).then(async (res) => {
-            let data = await res.json()
-            show_data(data)
-        })
-    }
-
-    function show_data(data) {
-        html.innerHTML =
-        `
-            <h4 id="name">${data['name']}</h4>
-            <h2 id="gender">${data['gender']}</h2>
-            <h3 id="probab">${parseInt(parseFloat(data['probability'])*100)}%</h3>
-        `
-    }
-
-</script>
 </html>
